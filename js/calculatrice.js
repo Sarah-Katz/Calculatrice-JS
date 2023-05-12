@@ -1,46 +1,46 @@
 // Affichage
 let affichage = document.getElementById("affichage");
-// Boutons des opérateurs
-let boutonPlus = document.getElementById("boutonPlus");
-let boutonMoins = document.getElementById("boutonMoins");
-let boutonFois = document.getElementById("boutonFois");
-let boutonDiviser = document.getElementById("boutonDiviser");
-// Boutons chiffres
-let boutonUn = document.getElementById("boutonUn");
-let boutonDeux = document.getElementById("boutonDeux");
-let boutonTrois = document.getElementById("boutonTrois");
-let boutonQuatre = document.getElementById("boutonQuatre");
-let boutonCinq = document.getElementById("boutonCinq");
-let boutonSix = document.getElementById("boutonSix");
-let boutonSept = document.getElementById("boutonSept");
-let boutonHuit = document.getElementById("boutonHuit");
-let boutonNeuf = document.getElementById("boutonNeuf");
-let boutonZero = document.getElementById("boutonZero");
-let boutonPoint = document.getElementById("boutonPoint");
-// Boutons d'édition du calcul
-let boutonRetour = document.getElementById("boutonRetour");
-let boutonEffacer = document.getElementById("boutonEffacer");
-let boutonEgal = document.getElementById("boutonEgal");
-
+let affichageTemp = document.getElementById("affichageTemp");
 // Event listener des boutons
-boutonPlus.addEventListener("click", () => ajoutAffichage("+"));
-boutonMoins.addEventListener("click", () => ajoutAffichage("-"));
-boutonFois.addEventListener("click", () => ajoutAffichage("*"));
-boutonDiviser.addEventListener("click", () => ajoutAffichage("/"));
-boutonUn.addEventListener("click", () => ajoutAffichage("1"));
-boutonDeux.addEventListener("click", () => ajoutAffichage("2"));
-boutonTrois.addEventListener("click", () => ajoutAffichage("3"));
-boutonQuatre.addEventListener("click", () => ajoutAffichage("4"));
-boutonCinq.addEventListener("click", () => ajoutAffichage("5"));
-boutonSix.addEventListener("click", () => ajoutAffichage("6"));
-boutonSept.addEventListener("click", () => ajoutAffichage("7"));
-boutonHuit.addEventListener("click", () => ajoutAffichage("8"));
-boutonNeuf.addEventListener("click", () => ajoutAffichage("9"));
-boutonZero.addEventListener("click", () => ajoutAffichage("0"));
-boutonPoint.addEventListener("click", () => ajoutAffichage("."));
-boutonRetour.addEventListener("click", () => retourAffichage());
-boutonEffacer.addEventListener("click", () => effacemmentAffichage());
-boutonEgal.addEventListener("click", () => calcul());
+// Boutons des opérateurs
+document.getElementById("boutonPlus").addEventListener("click", () => ajoutAffichage("+"));
+document.getElementById("boutonMoins").addEventListener("click", () => ajoutAffichage("-"));
+document.getElementById("boutonFois").addEventListener("click", () => ajoutAffichage("*"));
+document.getElementById("boutonDiviser").addEventListener("click", () => ajoutAffichage("/"));
+// Boutons chiffres
+document.getElementById("boutonUn").addEventListener("click", () => ajoutAffichage("1"));
+document.getElementById("boutonDeux").addEventListener("click", () => ajoutAffichage("2"));
+document.getElementById("boutonTrois").addEventListener("click", () => ajoutAffichage("3"));
+document.getElementById("boutonQuatre").addEventListener("click", () => ajoutAffichage("4"));
+document.getElementById("boutonCinq").addEventListener("click", () => ajoutAffichage("5"));
+document.getElementById("boutonSix").addEventListener("click", () => ajoutAffichage("6"));
+document.getElementById("boutonSept").addEventListener("click", () => ajoutAffichage("7"));
+document.getElementById("boutonHuit").addEventListener("click", () => ajoutAffichage("8"));
+document.getElementById("boutonNeuf").addEventListener("click", () => ajoutAffichage("9"));
+document.getElementById("boutonZero").addEventListener("click", () => ajoutAffichage("0"));
+document.getElementById("boutonPoint").addEventListener("click", () => ajoutAffichage("."));
+// Boutons d'édition du calcul
+document.getElementById("boutonRetour").addEventListener("click", () => retourAffichage());
+document.getElementById("boutonEffacer").addEventListener("click", () => effacemmentAffichage());
+document.getElementById("boutonEgal").addEventListener("click", () => calcul());
+
+//Event listener clavier
+document.addEventListener('keydown', (event) => {
+    let key = event.key;
+    console.log(key);
+    if (!isNaN(key) || key === "+" || key === "-" || key === "*" || key === "/" || key === ".") {
+        ajoutAffichage(key)
+    }
+    else if (key === "Backspace") {
+        retourAffichage()
+    }
+    else if (key === "Delete") {
+        effacemmentAffichage()
+    }
+    else if (key === "=" || key === "Enter") {
+        calcul()
+    }
+});
 
 // Fonction d'ajout à l'affichage du calcul
 function ajoutAffichage(char) {
@@ -51,6 +51,8 @@ function ajoutAffichage(char) {
     } else if (calcul === "Entrez un calcul") {
         affichage.innerText = char;
     } else if (!isNumerique && !isDernierCharNum) {
+    } else if (calcul === "/!\\ Erreur /!\\") {
+        affichage.innerText = char;        
     } else {
         controleDecimal(char)
     }
@@ -58,17 +60,16 @@ function ajoutAffichage(char) {
 
 // Fonction de contrôle des décimaux
 function controleDecimal(char) {
-    let regexExpression = /(?:(?:^|[-+_*/])(?:\s*-?\d+(\.\d+)?(?:[eE][+-]?\d+)?\s*))+$/;
+    let regexExpression = /^(?:[+-]?(?:\d+|\d*\.\d+)(?:[eE][+-]?\d+)?(?:\s*[-+*/]\s*[+-]?(?:\d+|\d*\.\d+)(?:[eE][+-]?\d+)?)*\s*)$/;
     let calcul = affichage.innerText;
     let test = calcul + char;
     occurencePoint = test.split('.').length - 1;
     if (occurencePoint > 1) {
-        let temp = test
         valid = regexExpression.test(test);
         if (valid) {
-            affichage.innerText = calcul + char;
+            affichage.innerText = test;
         } else {
-            affichage.innerText = temp;
+            affichage.innerText = "/!\\ Erreur /!\\";
         }
     } else {
         affichage.innerText = calcul + char;
@@ -105,5 +106,4 @@ function calcul() {
         let resultat = eval(expression);
         affichage.innerText = resultat;
     }
-
 }
