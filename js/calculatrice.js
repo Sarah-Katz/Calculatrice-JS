@@ -27,7 +27,6 @@ document.getElementById("boutonEgal").addEventListener("click", () => calcul());
 //Event listener clavier
 document.addEventListener('keydown', (event) => {
     let key = event.key;
-    console.log(key);
     if (!isNaN(key) || key === "+" || key === "-" || key === "*" || key === "/" || key === ".") {
         ajoutAffichage(key)
     }
