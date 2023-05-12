@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bulma/css/bulma.min.css">
+    <title>Calculatrice</title>
+</head>
+
+<body class="has-background-primary-dark  hero is-fullheight">
+    <div class="content is-vcentered has-text-weight-bold">
+        <div class="columns is-size-1">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-half has-background-primary">
+                <div class="columns is-mobile has-text-centered has-text-danger-dark">
+                    <div class="column" id="affichage">Entrez un calcul</div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-half">
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column">
+                        <a class="button is-rounded is-dark" id="boutonPlus">+</a>
+                    </div>
+                    <div class="column">
+                        <a class="button is-rounded is-dark" id="boutonMoins">-</a>
+                    </div>
+                    <div class="column">
+                        <a class="button is-rounded is-dark" id="boutonFois">*</a>
+                    </div>
+                    <div class="column">
+                        <a class="button is-rounded is-dark" id="boutonDiviser">/</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-half">
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonUn">1</a>
+                    </div>
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonDeux">2</a>
+                    </div>
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonTrois">3</a>
+                    </div>
+                    <div class="column">
+                        <a class=" button is-rounded is-info" id="boutonRetour">Retour Arr.</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-half">
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonQuatre">4</a>
+                    </div>
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonCinq">5</a>
+                    </div>
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonSix">6</a>
+                    </div>
+                    <div class="column">
+                        <a class=" button is-rounded is-danger" id="boutonEffacer">Effacer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-half">
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonSept">7</a>
+                    </div>
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonHuit">8</a>
+                    </div>
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonNeuf">9</a>
+                    </div>
+                    <div class="column">
+                        <a class=" button is-rounded is-dark" id="boutonEgal">=</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column is-one-quarter"></div>
+            <div class="column is-half">
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonPoint">.</a>
+                    </div>
+                    <div class="column is-one-fifth-mobile">
+                        <a class=" button is-rounded is-dark" id="boutonZero">0</a>
+                    </div>
+                    <div class="column"></div>
+                    <div class="column"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/calculatrice.js"></script>
+</body>
+
+</html>
